@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    android:id="@+id/textItemLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <TextView
+        android:gravity="center"
+
+        android:id="@+id/day_txt"
+        android:padding="10dp"
+        android:text="Sun"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:gravity="center"
+        android:id="@+id/date_txt"
+        android:padding="10dp"
+        android:text="12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:gravity="center"
+        android:id="@+id/date_event"
+        android:padding="10dp"
+        android:text="12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+
+
+</LinearLayout>
