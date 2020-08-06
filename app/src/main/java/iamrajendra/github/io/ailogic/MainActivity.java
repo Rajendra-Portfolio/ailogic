@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import org.json.JSONObject;
 
@@ -29,11 +31,13 @@ public class MainActivity extends AppCompatActivity implements CustomCalendarVie
     private String TAG = MainActivity.class.getSimpleName();
 
     private LinearLayoutManager mLinearLayoutManager;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        progressBar = findViewById(R.id.loading);
 
         ApiInterface apiService =
                 ApiClient.getClient().create(ApiInterface.class);
@@ -44,12 +48,14 @@ public class MainActivity extends AppCompatActivity implements CustomCalendarVie
                         Log.i(TAG, "onResponse: " + response.body());
                         CustomerFactory.getCustomerFactory().parseData(response.body().getGETCUSTOMERSCHEDULEDATA());
                         intialCal(CustomerFactory.getCustomerFactory().getInitialDate(), CustomerFactory.getCustomerFactory().getFinalDate(), CustomerFactory.getCustomerFactory().getSortedList());
+                        progressBar.setVisibility(View.GONE);
 
                     }
 
                     @Override
                     public void onFailure(Call<Example> call, Throwable t) {
                         Log.e(TAG, "onFailure: " + t);
+                        progressBar.setVisibility(View.GONE);
 
                     }
                 });
